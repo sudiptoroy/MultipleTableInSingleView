@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var data = [String: Array<Any>]()
+        var data = [String: Array<String>]()
         // Do any additional setup after loading the view, typically from a nib.
         
         data = dataSet()
@@ -20,9 +20,9 @@ class ViewController: UIViewController {
     }
     
     
-    func dataSet () -> [String: Array<Any>] {
+    func dataSet () -> [String: Array<String>] {
         
-        var dataSetDict = [String: Array<Any>]()
+        var dataSetDict = [String: Array<String>]()
         
         dataSetDict = ["A" : ["Apple", "Ant"],
                        "B" : ["Boat", "Ball"],
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
                        "D" : ["Dog", "Duck"],
                        "E" : ["Elephant", "Empire"]
                        
-            ] as [String : Array<Any>]
+            ] as [String : Array<String>]
         
         for (key, value) in dataSetDict {
             print("Dictionary key \(key) - Dictionary value \(value)")
