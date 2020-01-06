@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         print(data)
     }
     
-    
+    // Function for Data
     func dataSet () -> [String: Array<String>] {
         
         var dataSetDict = [String: Array<String>]()
