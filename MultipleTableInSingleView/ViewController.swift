@@ -16,25 +16,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var cellIdentifier : String = "cell"
     
+    // Dictionary for Sample Data
+    let data = ["A" : ["Apple", "Ant"],
+                "B" : ["Boat", "Ball"],
+                "C" : ["Cat", "Castle"],
+                "D" : ["Dog", "Duck"],
+                "E" : ["Elephant", "Empire"]]
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // Do any additional setup after loading the view, typically from a nib.
         table1.delegate = self
         table2.delegate = self
         table1.dataSource = self
         table2.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
+
     }
     
     // function to find how many rows to generate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1 {
-            let data = dataSet()
             print("In table tableView numberofrows")
             print(data)
             let numberOfRows = data.count
@@ -46,33 +50,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath) as UITableViewCell
-        let data = dataSet()
         if tableView.tag == 1 {
             cell.textLabel?.text = Array(data.keys)[indexPath.row]
             
         }
         return cell
     }
-    
-    // Function for Data
-    func dataSet () -> [String: Array<String>] {
-        
-        var dataSetDict = [String: Array<String>]()
-        
-        dataSetDict = ["A" : ["Apple", "Ant"],
-                       "B" : ["Boat", "Ball"],
-                       "C" : ["Cat", "Castle"],
-                       "D" : ["Dog", "Duck"],
-                       "E" : ["Elephant", "Empire"]
-                       
-            ] as [String : Array<String>]
-        
-        for (key, value) in dataSetDict {
-            print("Dictionary key \(key) - Dictionary value \(value)")
-        }
-        
-        return dataSetDict
-    }
-
-  }
+}
 
