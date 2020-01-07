@@ -13,8 +13,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var table1: UITableView!
     @IBOutlet weak var table2: UITableView!
     
-    
+    // Identifier for cell
     var cellIdentifier : String = "cell"
+    
+    // Variable to assign number of rows
+    var numberOfRows : Int = 0
+    
+    var items = [String]()
     
     // Dictionary for Sample Data
     let data = ["A" : ["Apple", "Ant"],
@@ -23,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 "D" : ["Dog", "Duck"],
                 "E" : ["Elephant", "Empire"]]
     
-    
+    var keyReference : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +46,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableView.tag == 1 {
             print("In table tableView numberofrows")
             print(data)
-            let numberOfRows = data.count
+            numberOfRows = data.count
+            print(numberOfRows)
             return numberOfRows
-        } else {
-            return 0
         }
+        
+        else if tableView.tag == 2{
+            return items.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath) as UITableViewCell
+        print(items.count
+        )
         if tableView.tag == 1 {
+            
             cell.textLabel?.text = Array(data.keys)[indexPath.row]
+        }
+        else if tableView.tag == 2 {
+            cell.textLabel?.text = items[indexPath.row]
             
         }
         return cell
     }
-}
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView.tag == 1 {
+            print(Array(data.values)[indexPath.row])
+            items.append(contentsOf: Array(data.values)[indexPath.row])
+            tableView.reloadData()
+            //print(items)
+        }
+    }
+  }
 
